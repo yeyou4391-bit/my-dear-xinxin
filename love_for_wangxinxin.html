@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>❤️ 王馨馨 ❤️ 许盛铭 ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 50%, #ff9a9e 100%);
+            font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* 背景漂浮爱心 */
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .floating-heart {
+            position: absolute;
+            font-size: 20px;
+            color: rgba(255, 107, 107, 0.6);
+            animation: floatUp linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) rotate(0deg) scale(0.5);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-10vh) rotate(720deg) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 50px 60px;
+            box-shadow: 0 25px 60px rgba(255, 107, 107, 0.3),
+                        0 0 40px rgba(255, 107, 107, 0.1);
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+            animation: containerAppear 0.8s ease-out;
+        }
+
+        @keyframes containerAppear {
+            0% {
+                opacity: 0;
+                transform: scale(0.5) translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        /* 大爱心动画 */
+        .big-heart {
+            font-size: 100px;
+            display: inline-block;
+            animation: heartbeat 1.2s ease-in-out infinite;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            14% {
+                transform: scale(1.3);
+            }
+            28% {
+                transform: scale(1);
+            }
+            42% {
+                transform: scale(1.3);
+            }
+            70% {
+                transform: scale(1);
+            }
+        }
+
+        .title {
+            font-size: 28px;
+            font-weight: bold;
+            margin: 15px 0 5px;
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24, #ff6b6b);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 3s ease-in-out infinite;
+            line-height: 1.4;
+        }
+
+        .sub-name {
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: #e84393;
+            text-shadow: 0 2px 10px rgba(232, 67, 147, 0.3);
+        }
+
+        @keyframes gradientShift {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .subtitle {
+            font-size: 17px;
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .message-box {
+            background: linear-gradient(135deg, #fff5f5, #ffe8e8);
+            border-radius: 20px;
+            padding: 25px;
+            margin: 20px 0;
+            border: 2px dashed #ff9a9e;
+            position: relative;
+        }
+
+        .message-box::before {
+            content: '💌';
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            font-size: 30px;
+            transform: rotate(-15deg);
+        }
+
+        .message {
+            font-size: 18px;
+            color: #444;
+            line-height: 1.8;
+            min-height: 60px;
+            transition: opacity 0.3s;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            box-shadow: 0 5px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.5);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #a29bfe, #6c5ce7);
+            color: white;
+            box-shadow: 0 5px 20px rgba(108, 92, 231, 0.4);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(108, 92, 231, 0.5);
+        }
+
+        .btn-secondary:active {
+            transform: translateY(0);
+        }
+
+        .btn-pink {
+            background: linear-gradient(135deg, #fd79a8, #e84393);
+            color: white;
+            box-shadow: 0 5px 20px rgba(232, 67, 147, 0.4);
+        }
+
+        .btn-pink:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(232, 67, 147, 0.5);
+        }
+
+        .btn-pink:active {
+            transform: translateY(0) scale(1);
+        }
+
+        /* 点击特效 */
+        .click-effect {
+            position: fixed;
+            pointer-events: none;
+            font-size: 30px;
+            animation: clickPop 0.8s ease-out forwards;
+            z-index: 100;
+        }
+
+        @keyframes clickPop {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(0.5);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100px) scale(1.5);
+            }
+        }
+
+        /* 彩纸特效 */
+        .confetti-piece {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            z-index: 99;
+            pointer-events: none;
+            animation: confettiFall linear forwards;
+        }
+
+        @keyframes confettiFall {
+            0% {
+                opacity: 1;
+                transform: translateY(-10vh) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(110vh) rotate(720deg);
+            }
+        }
+
+        .status-bar {
+            margin-top: 15px;
+            padding: 10px;
+            background: rgba(255, 107, 107, 0.1);
+            border-radius: 15px;
+            font-size: 15px;
+            color: #888;
+        }
+
+        .status-bar .heart-count {
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+            }
+            .big-heart {
+                font-size: 70px;
+            }
+            .title {
+                font-size: 22px;
+            }
+            .message {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 背景漂浮爱心 -->
+    <div class="floating-hearts" id="floatingHearts"></div>
+
+    <!-- 主容器 -->
+    <div class="container">
+        <div class="big-heart" id="bigHeart" onclick="createClickEffect(event)">❤️</div>
+        
+        <div class="sub-name">王馨馨 ❤️ 许盛铭</div>
+        <h1 class="title" id="titleText">我的馨馨最可爱！🥰</h1>
+        <p class="subtitle">✨ 这是属于馨馨和盛铭的小宇宙 ✨</p>
+
+        <div class="message-box">
+            <div class="message" id="messageDisplay">
+                💕 馨馨，你是我生命中最美的风景！ ——爱你的盛铭
+            </div>
+        </div>
+
+        <div class="btn-group">
+            <button class="btn btn-primary" onclick="showSweetMessage()">💬 说甜话</button>
+            <button class="btn btn-secondary" onclick="launchConfetti()">🎉 撒花</button>
+            <button class="btn btn-pink" onclick="showLoveMeter()">💗 爱心值</button>
+        </div>
+
+        <div class="status-bar">
+            💖 已接收爱心：<span class="heart-count" id="heartCount">0</span> 次 &nbsp;&nbsp;|&nbsp;&nbsp; 
+            😊 开心指数：<span id="happyLevel">❤️🤍🤍🤍🤍 需要更多爱～🥺</span>
+        </div>
+    </div>
+
+    <script>
+        // ============ 甜言蜜语库（包含名字） ============
+        const sweetMessages = [
+            "💕 馨馨，你是我生命中最美的风景！——爱你的盛铭",
+            "🥰 馨馨，每当我看到你，心跳都漏了一拍～",
+            "🌟 馨馨，你是我的小太阳，照亮了我的全世界！",
+            "🌸 馨馨，你比春天的花朵还要美丽动人～",
+            "🐱 想把你揣在口袋里，走到哪都带着我的馨馨！",
+            "🌈 和馨馨在一起，每天都像在过情人节！",
+            "🎀 馨馨，你是我遇见的最好的礼物！",
+            "🌙 馨馨，你是我梦里的月光，温柔又闪亮～",
+            "🍭 馨馨，你比糖果还要甜！",
+            "💫 馨馨，不管发生什么，我都会一直陪在你身边！",
+            "🦋 馨馨一笑，我的世界就亮了～",
+            "🎵 馨馨，你是我听过最动听的旋律！",
+            "☁️ 想带馨馨去看最美的云，走最远的路～",
+            "🧸 馨馨就是我的小熊软糖，又甜又软！",
+            "✨ 遇见馨馨，是我这辈子最大的幸运！",
+            "🌺 馨馨，你今天比昨天更漂亮了！",
+            "🎈 我的世界因为馨馨，变得五彩缤纷～",
+            "🍫 馨馨就像巧克力，让我甜到心里去了！",
+            "🪐 馨馨，你是我宇宙中最亮的星星！",
+            "💝 偷偷告诉馨馨：我最喜欢的人就是你啦！",
+            "🏆 馨馨在我心里永远是第一名！",
+            "🎠 想带馨馨去游乐园，看你开心的样子～",
+            "🍦 馨馨是夏天的冰淇淋，甜甜的、凉凉的～",
+            "🦄 馨馨是独一无二的小独角兽，最特别！",
+            "🌻 馨馨比向日葵还要温暖，比阳光还要灿烂！",
+            "💑 盛铭永远爱馨馨，一辈子都不变！❤️",
+            "📝 每一页日记里都是馨馨的名字～",
+            "🎶 馨馨是盛铭心中永远的主题曲！",
+            "🌹 送馨馨一束花，不如送馨馨一辈子幸福！"
+        ];
+
+        let heartCount = 0;
+        let messageIndex = 0;
+
+        // ============ 生成背景爱心 ============
+        function createFloatingHearts() {
+            const container = document.getElementById('floatingHearts');
+            const emojis = ['❤️', '💕', '💗', '💖', '💝', '💘', '💓', '🧡', '💛', '💚', '💙', '💜'];
+            
+            for (let i = 0; i < 30; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'floating-heart';
+                heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.fontSize = (15 + Math.random() * 25) + 'px';
+                heart.style.animationDuration = (8 + Math.random() * 12) + 's';
+                heart.style.animationDelay = (Math.random() * 15) + 's';
+                container.appendChild(heart);
+            }
+        }
+
+        // ============ 展示甜言蜜语 ============
+        function showSweetMessage() {
+            const messageDisplay = document.getElementById('messageDisplay');
+            const msg = sweetMessages[messageIndex % sweetMessages.length];
+            
+            // 添加淡出效果
+            messageDisplay.style.opacity = '0';
+            setTimeout(() => {
+                messageDisplay.textContent = msg;
+                messageDisplay.style.opacity = '1';
+            }, 200);
+            
+            messageIndex++;
+            addHeart();
+        }
+
+        // ============ 点击爱心特效 ============
+        function createClickEffect(event) {
+            const emojis = ['❤️', '💕', '💗', '💖', '💝', '💘', '💓', '🥰', '😘', '💋'];
+            const emoji = emojis[Math.floor(Math.random() * emojis.length)];
+            
+            const effect = document.createElement('div');
+            effect.className = 'click-effect';
+            effect.textContent = emoji;
+            effect.style.left = (event.clientX - 15) + 'px';
+            effect.style.top = (event.clientY - 15) + 'px';
+            document.body.appendChild(effect);
+            
+            setTimeout(() => effect.remove(), 800);
+            addHeart();
+        }
+
+        // ============ 撒花特效 ============
+        function launchConfetti() {
+            const colors = ['#ff6b6b', '#ffd93d', '#6bcb77', '#4d96ff', '#ff6b9d', '#a29bfe', '#fd79a8', '#00cec9'];
+            const shapes = ['●', '■', '▲', '★', '♦', '♥', '✦', '●'];
+            
+            for (let i = 0; i < 60; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti-piece';
+                    confetti.textContent = shapes[Math.floor(Math.random() * shapes.length)];
+                    confetti.style.color = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.fontSize = (8 + Math.random() * 16) + 'px';
+                    confetti.style.animationDuration = (2 + Math.random() * 3) + 's';
+                    confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+                    document.body.appendChild(confetti);
+                    
+                    setTimeout(() => confetti.remove(), 5000);
+                }, i * 50);
+            }
+            
+            addHeart();
+            // 撒花时换个标题
+            const titles = ['🎉 馨馨最棒啦！', '✨ 为馨馨绽放！', '🌈 馨馨是我的彩虹！', '🌟 闪闪发光的馨馨！', '🎊 爱馨馨哟！'];
+            const titleEl = document.getElementById('titleText');
+            const originalTitle = titleEl.textContent;
+            titleEl.textContent = titles[Math.floor(Math.random() * titles.length)];
+            setTimeout(() => {
+                titleEl.textContent = originalTitle;
+            }, 3000);
+        }
+
+        // ============ 爱心值 ============
+        function showLoveMeter() {
+            const messageDisplay = document.getElementById('messageDisplay');
+            const loveLevel = Math.min(heartCount, 100);
+            
+            let meter = '';
+            const fullHearts = Math.floor(loveLevel / 10);
+            for (let i = 0; i < 10; i++) {
+                if (i < fullHearts) {
+                    meter += '❤️';
+                } else {
+                    meter += '🤍';
+                }
+            }
+            
+            const messages = [
+                loveLevel >= 100 ? '💯 满分！盛铭对馨馨的爱已经爆表啦！！！' :
+                loveLevel >= 80 ? '💖 超级爱馨馨！馨馨是我的全部！' :
+                loveLevel >= 60 ? '💗 非常爱馨馨，每天都在想你～' :
+                loveLevel >= 40 ? '💕 好喜欢馨馨，你是我的小甜甜！' :
+                loveLevel >= 20 ? '💓 有一点点喜欢馨馨哦～再点点我！' :
+                '💔 馨馨快点点我呀，爱心还不多呢！'
+            ];
+            
+            messageDisplay.textContent = `💗 爱心值：${loveLevel}%\n${meter}\n${messages}`;
+            
+            // 撒一点小花庆祝
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti-piece';
+                    confetti.textContent = ['🌸', '🌺', '🌻', '🌹', '🌷', '💐'][Math.floor(Math.random() * 6)];
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.fontSize = '15px';
+                    confetti.style.animationDuration = '3s';
+                    document.body.appendChild(confetti);
+                    setTimeout(() => confetti.remove(), 3000);
+                }, i * 100);
+            }
+            
+            addHeart();
+        }
+
+        // ============ 增加爱心计数 ============
+        function addHeart() {
+            heartCount++;
+            document.getElementById('heartCount').textContent = heartCount;
+            
+            // 更新开心指数
+            const happyLevel = document.getElementById('happyLevel');
+            if (heartCount >= 30) {
+                happyLevel.textContent = '❤️❤️❤️❤️❤️ 超级无敌开心！🥳';
+            } else if (heartCount >= 20) {
+                happyLevel.textContent = '❤️❤️❤️❤️🤍 非常开心！😆';
+            } else if (heartCount >= 10) {
+                happyLevel.textContent = '❤️❤️❤️🤍🤍 有点开心！😊';
+            } else if (heartCount >= 5) {
+                happyLevel.textContent = '❤️❤️🤍🤍🤍 还不错～🙂';
+            } else {
+                happyLevel.textContent = '❤️🤍🤍🤍🤍 需要更多爱～🥺';
+            }
+        }
+
+        // ============ 页面加载自动运行 ============
+        window.onload = function() {
+            createFloatingHearts();
+            
+            // 自动显示第一条消息
+            setTimeout(() => {
+                showSweetMessage();
+            }, 500);
+            
+            // 每10秒自动换一条甜言蜜语（如果用户没有操作）
+            setInterval(() => {
+                showSweetMessage();
+            }, 10000);
+        };
+
+        // ============ 键盘快捷键 ============
+        document.addEventListener('keydown', (e) => {
+            if (e.key === ' ' || e.key === 'Enter') {
+                e.preventDefault();
+                showSweetMessage();
+            } else if (e.key === 'c') {
+                launchConfetti();
+            } else if (e.key === 'l') {
+                showLoveMeter();
+            }
+        });
+    </script>
+</body>
+</html>
